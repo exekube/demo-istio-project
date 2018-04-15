@@ -2,7 +2,7 @@ terraform {
   backend "gcs" {}
 }
 
-resource "null_resource" "bookinfo-app" {
+resource "null_resource" "bookinfo_app" {
   provisioner "local-exec" {
     interpreter = ["/bin/bash", "-c"]
 
