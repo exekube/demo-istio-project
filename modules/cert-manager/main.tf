@@ -18,7 +18,7 @@ module "cert_manager" {
 
 # cert-manager issuers
 resource "null_resource" "issuers" {
-  depends_on = ["module.istio_nightly"]
+  depends_on = ["module.cert_manager"]
 
   provisioner "local-exec" {
     command = "kubectl apply -f ${path.module}/resources/issuers.yaml"
