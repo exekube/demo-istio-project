@@ -5,7 +5,7 @@ terraform {
 variable "secrets_dir" {}
 
 # cert-manager Helm release
-module "istio_nightly" {
+module "cert_manager" {
   source           = "/exekube-modules/helm-release-v2"
   tiller_namespace = "kube-system"
   client_auth      = "${var.secrets_dir}/kube-system/_helm"
