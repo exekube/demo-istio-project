@@ -7,7 +7,7 @@ terragrunt = {
 
   dependencies {
     paths = [
-      "../../kube-system/istio",
+      "../../istio-system/istio",
     ]
   }
 
