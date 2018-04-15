@@ -10,7 +10,9 @@ module "cert_manager" {
   tiller_namespace = "kube-system"
   client_auth      = "${var.secrets_dir}/kube-system/_helm"
 
-  release_name  = "cert-manager"
+  release_name      = "cert-manager"
+  release_namespace = "kube-system"
+
   chart_repo    = "stable"
   chart_name    = "cert-manager"
   chart_version = "0.2.8"
