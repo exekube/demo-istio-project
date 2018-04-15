@@ -1,0 +1,23 @@
+apiVersion: certmanager.k8s.io/v1alpha1
+kind: Certificate
+metadata:
+  name: bookinfo-c6ns-pw
+  namespace: istio-system
+spec:
+  secretName: istio-ingress-certs
+  issuerRef:
+    kind: ClusterIssuer
+    name: letsencrypt-stg
+  # commonName: example.com
+  dnsNames:
+  - dev.react.apps.c6ns.pw
+  - bookinfo.c6ns.pw
+  - dev.bookinfo.c6ns.pw
+  acme:
+    config:
+    - http01:
+        ingressClass: istio
+      domains:
+      - dev.react.apps.c6ns.pw
+      - bookinfo.c6ns.pw
+      - dev.bookinfo.c6ns.pw

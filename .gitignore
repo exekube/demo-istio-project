@@ -1,0 +1,6 @@
+.config/
+.hide/
+istio-0*/
+live/**/secrets/**
+!live/**/secrets/*.example
+!live/**/secrets/.keep
