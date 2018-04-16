@@ -19,29 +19,15 @@ module "cert_manager" {
 }
 
 # cert-manager issuers
-resource "null_resource" "issuers" {
+resource "null_resource" "cert_manager_resources" {
   depends_on = ["module.cert_manager"]
 
   provisioner "local-exec" {
-    command = "kubectl apply -f ${path.module}/resources/issuers.yaml"
+    command = "kubectl apply -f ${path.module}/resources/"
   }
 
   provisioner "local-exec" {
     when    = "destroy"
-    command = "kubectl delete -f ${path.module}/resources/issuers.yaml"
-  }
-}
-
-# cert-manager certificates
-resource "null_resource" "certs" {
-  depends_on = ["null_resource.issuers"]
-
-  provisioner "local-exec" {
-    command = "kubectl apply -f ${path.module}/resources/certs.yaml"
-  }
-
-  provisioner "local-exec" {
-    when    = "destroy"
-    command = "kubectl delete -f ${path.module}/resources/certs.yaml"
+    command = "kubectl delete -f ${path.module}/resources/"
   }
 }
