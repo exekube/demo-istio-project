@@ -36,21 +36,13 @@ If you are new to Exekube, follow the *Getting Started Tutorial* at https://exek
 
 ```sh
 modules/
-├── bookinfo
-├── cert-manager
-├── cluster-admin
-
-├── istio
-└── istio-nightly
-
-modules/
-├── bookinfo
 ├── cert-manager    # cert-manager Helm release
 ├── cluster-admin   # cluster-admin Helm release (cluster administration tasks)
 ├── gcp-secret-mgmt # Cloud KMS encryption keys + GCS storage bucket for secrets
 ├── gke-cluster     # GKE cluster
 ├── gke-network     # Networking module for the cluster
 ├── istio           # Istio latest stable release (0.7.1)
+├── istio-bookinfo  # Istio Bookinfo example app
 └── istio-nightly   # Istio nightly release (unstable)
 ```
 
