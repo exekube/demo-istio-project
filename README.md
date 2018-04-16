@@ -12,18 +12,23 @@ If you are new to Exekube, follow the *Getting Started Tutorial* at https://exek
 
 ---
 
-- [Project structure](#project-structure)
-	- [Project modules](#project-modules)
-	- [Project environments](#project-environments)
-- [Configuring the project](#configuring-the-project)
-	- [Global settings: docker-compose.yaml](#global-settings-docker-composeyaml)
-	- [network module](#network-module)
-	- [cluster module](#cluster-module)
-	- [cluster-admin module](#cluster-admin-module)
-	- [istio / istio-nightly modules](#istio-istio-nightly-modules)
-	- [cert-manager module](#cert-manager-module)
-	- [bookinfo module](#bookinfo-module)
-- [Contributions](#contributions)
+<!-- TOC depthFrom:1 depthTo:6 withLinks:1 updateOnSave:1 orderedList:0 -->
+
+- [demo-istio-project](#demo-istio-project)
+	- [Project structure](#project-structure)
+		- [Project modules](#project-modules)
+		- [Project environments](#project-environments)
+	- [Configuring the project](#configuring-the-project)
+		- [docker-compose.yaml (project settings)](#docker-composeyaml-project-settings)
+		- [gke-network module](#gke-network-module)
+		- [gke-cluster module](#gke-cluster-module)
+		- [cluster-admin module](#cluster-admin-module)
+		- [istio / istio-nightly modules](#istio-istio-nightly-modules)
+		- [istio-bookinfo module](#istio-bookinfo-module)
+		- [cert-manager module](#cert-manager-module)
+	- [Contributions](#contributions)
+
+<!-- /TOC -->
 
 ## Project structure
 
@@ -31,12 +36,22 @@ If you are new to Exekube, follow the *Getting Started Tutorial* at https://exek
 
 ```sh
 modules/
-├── bookinfo      # Istio Bookinfo sample application
-├── cert-manager  # cert-manager for TLS certificates
-├── cluster       # GKE cluster
-├── cluster-admin # Common cluster administration tasks
-├── istio         # Istio latest stable release (0.7.1)
-└── istio-nightly # Istio nightly release (unstable)
+├── bookinfo
+├── cert-manager
+├── cluster-admin
+
+├── istio
+└── istio-nightly
+
+modules/
+├── bookinfo
+├── cert-manager    # cert-manager Helm release
+├── cluster-admin   # cluster-admin Helm release (cluster administration tasks)
+├── gcp-secret-mgmt # Cloud KMS encryption keys + GCS storage bucket for secrets
+├── gke-cluster     # GKE cluster
+├── gke-network     # Networking module for the cluster
+├── istio           # Istio latest stable release (0.7.1)
+└── istio-nightly   # Istio nightly release (unstable)
 ```
 
 Project-scoped Terraform modules can be found in the `modules` directory. These modules contain configuration that *is common* to all environments (dev, stg, prod) of the demo-istio-project.
@@ -63,15 +78,15 @@ Live modules are similar in scope to Terraform [workspaces](/), namely because e
 
 ## Configuring the project
 
-### Global settings: docker-compose.yaml
+### docker-compose.yaml (project settings)
 
 ...
 
-### network module
+### gke-network module
 
 ...
 
-### cluster module
+### gke-cluster module
 
 ...
 
@@ -83,11 +98,11 @@ Live modules are similar in scope to Terraform [workspaces](/), namely because e
 
 ...
 
-### cert-manager module
+### istio-bookinfo module
 
 ...
 
-### bookinfo module
+### cert-manager module
 
 ...
 

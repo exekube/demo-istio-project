@@ -2,7 +2,7 @@
 
 terragrunt = {
   terraform {
-    source = "/exekube-modules//gcp-secret-mgmt"
+    source = "/project/modules//gcp-secret-mgmt"
   }
 
   include = {
@@ -11,13 +11,4 @@ terragrunt = {
 }
 
 # ↓ Module configuration (empty means all default)
-
-
-# A Google Cloud Storage bucket will be created for each encryption key
-/*
-encryption_keys = [
-  "kube-system",
-  "default",
-]
-*/
 

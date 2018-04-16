@@ -2,7 +2,7 @@
 
 terragrunt = {
   terraform {
-    source = "/project/modules//cluster"
+    source = "/project/modules//gke-cluster"
   }
 
   include = {
