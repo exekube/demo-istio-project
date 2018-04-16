@@ -5,10 +5,11 @@ services:
     image: exekube/exekube:0.3.0-google-istio
     working_dir: /project
     environment:
-      TF_INPUT: "0"
-      TF_LOG:
       USER: root
       ENV:
+      TF_INPUT: "0"
+      TF_LOG:
+
       ORGANIZATION_ID:
       BILLING_ID:
       # TF_VAR_project_id is used to create a GCP project for our environment
