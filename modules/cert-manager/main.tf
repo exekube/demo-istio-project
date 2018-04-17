@@ -18,7 +18,7 @@ module "cert_manager" {
   chart_version = "0.2.8"
 }
 
-# cert-manager issuers
+# cert-manager resources (issuers, certs)
 resource "null_resource" "cert_manager_resources" {
   depends_on = ["module.cert_manager"]
 
