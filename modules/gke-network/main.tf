@@ -22,3 +22,15 @@ module "gke_network" {
   dns_zones   = "${var.dns_zones}"
   dns_records = "${var.dns_records}"
 }
+
+output "static_ip_address" {
+  value = "${module.gke_network.static_ip_address}"
+}
+
+output "dns_zones" {
+  value = "${module.gke_network.dns_zones}"
+}
+
+output "dns_zone_servers" {
+  value = "${module.gke_network.dns_zone_servers}"
+}
