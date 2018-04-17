@@ -18,4 +18,4 @@ terragrunt = {
 
 # ↓ Module configuration (empty means all default)
 
-load_balancer_ip = "35.187.107.8"
+load_balancer_ip = "35.205.26.156"

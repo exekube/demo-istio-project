@@ -15,9 +15,9 @@ terragrunt = {
 # create_static_ip_address = false
 
 dns_zones = {
-  "c6ns-pw" = "c6ns.pw."
+  istio-exekube-us = "istio.exekube.us."
 }
 
 dns_records = {
-  "c6ns-pw" = "*.c6ns.pw."
+  istio-exekube-us = "*.istio.exekube.us."
 }
