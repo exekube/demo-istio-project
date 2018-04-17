@@ -14,7 +14,8 @@ variable "dns_records" {
 }
 
 module "gke_network" {
-  source             = "/exekube-modules/gke-network"
+  source = "/exekube-modules/gke-network"
+
   project_id         = "${var.project_id}"
   serviceaccount_key = "${var.serviceaccount_key}"
 

@@ -7,9 +7,8 @@ terragrunt = {
 
   dependencies {
     paths = [
-      "../../istio-system/istio",
       "../cluster-admin",
-      "../_helm",
+      "../../istio-system/istio",
     ]
   }
 

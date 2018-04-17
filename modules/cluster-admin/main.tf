@@ -7,7 +7,7 @@ variable "secrets_dir" {}
 module "cluster_admin" {
   source           = "/exekube-modules/helm-release-v2"
   tiller_namespace = "kube-system"
-  client_auth      = "${var.secrets_dir}/kube-system/_helm"
+  client_auth      = "${var.secrets_dir}/kube-system/helm-tls"
 
   release_name      = "cluster-admin"
   release_namespace = "kube-system"

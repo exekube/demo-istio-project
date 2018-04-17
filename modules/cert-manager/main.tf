@@ -8,7 +8,7 @@ variable "secrets_dir" {}
 module "cert_manager" {
   source           = "/exekube-modules/helm-release-v2"
   tiller_namespace = "kube-system"
-  client_auth      = "${var.secrets_dir}/kube-system/_helm"
+  client_auth      = "${var.secrets_dir}/kube-system/helm-tls"
 
   release_name      = "cert-manager"
   release_namespace = "kube-system"
