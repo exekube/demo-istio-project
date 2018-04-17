@@ -56,12 +56,19 @@ live/
 │   │   │   └── terraform.tfvars
 │   │   ├── default
 │   │   │   └── bookinfo
+│   │   │       └── terraform.tfvars
 │   │   ├── istio-system
 │   │   │   └── istio
+│   │   │       └── terraform.tfvars
 │   │   └── kube-system
 │   │       ├── cert-manager
+│   │       │   ├── resources
+│   │       │   │   └── certs.yaml
+│   │       │   └── terraform.tfvars
 │   │       ├── cluster-admin
+│   │       │   └── terraform.tfvars
 │   │       └── helm-initializer
+│   │           └── terraform.tfvars
 │   └── secrets
 │       ├── default
 │       │   └── helm-tls
