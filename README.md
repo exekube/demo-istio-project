@@ -27,18 +27,41 @@ To get this working, you'll need to:
 
 ### Project modules
 
-```sh
-modules/
-├── gcp-secret-mgmt   # Cloud KMS cryptokeys + GCS storage buckets for secrets
-├── gke-network       # Networking module for the cluster
-├── gke-cluster       # GKE cluster
-├── helm-initializer  # Install Tiller in any namespace
-├── cluster-admin     # cluster-admin Helm release
-├── cert-manager      # cert-manager Helm release
-├── istio             # Istio latest stable release (0.7.1)
-├── istio-nightly     # Istio nightly release (unstable)
-└── istio-bookinfo    # Istio Bookinfo example app
-```
+#### `gcp-secret-mgmt`
+
+This module creates Google Cloud KMS encryption keys and GCS storage buckets for storing and distributing secrets.
+
+#### `gke-network`
+
+This module creates networking resources for our GKE cluster.
+
+#### `gke-cluster`
+
+This module creates a GKE cluster.
+
+#### `administration-tasks`
+
+This module handles common cluster administration tasks, such as assigning cluster-admins, creating namespaces, and securing the Kubernetes Dashboard. Can be installed before Tiller (using `helm template ... | kubectl apply -f`) or through kube-system Tiller.
+
+#### `helm-initializer`
+
+This modules installs Tiller into `kube-system` namespace.
+
+#### `cert-manager`
+
+This modules installs cert-manager Helm chart into `kube-system` namespace.
+
+#### `istio`
+
+This module installs Istio 0.7.1 (latest release on GitHub)
+
+#### `istio-nightly`
+
+This module installs the latest version of Istio (from `master` branch on GitHub).
+
+#### `istio-bookinfo`
+
+This module installs istio-bookinfo sample application.
 
 ### Project environments
 
@@ -61,19 +84,28 @@ live/
 │   │   │   └── istio
 │   │   │       └── terraform.tfvars
 │   │   └── kube-system
+│   │       ├── administration-tasks
+│   │       │   └── terraform.tfvars
 │   │       ├── cert-manager
 │   │       │   ├── resources
-│   │       │   │   └── certs.yaml
-│   │       │   └── terraform.tfvars
-│   │       ├── cluster-admin
 │   │       │   └── terraform.tfvars
 │   │       └── helm-initializer
 │   │           └── terraform.tfvars
 │   └── secrets
 │       ├── default
 │       │   └── helm-tls
+│       │       ├── ca.cert.pem
+│       │       ├── helm.cert.pem
+│       │       ├── helm.key.pem
+│       │       ├── tiller.cert.pem
+│       │       └── tiller.key.pem
 │       └── kube-system
 │           ├── helm-tls
+│           │   ├── ca.cert.pem
+│           │   ├── helm.cert.pem
+│           │   ├── helm.key.pem
+│           │   ├── tiller.cert.pem
+│           │   └── tiller.key.pem
 │           └── owner.json
 ├── stg
 │   ...
