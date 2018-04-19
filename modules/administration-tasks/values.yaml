@@ -1,10 +1,7 @@
 # List namespaces to create
 namespaces:
-  - istio-system
-
-# Whether create a default deny-all policy and allow access to kube-dns for the namespaces
-networkPolicy:
-  create: false
+  - name: istio-system
+    secure: false
 
 # Assign users as cluster-admins
 clusterAdmins:
@@ -20,4 +17,4 @@ dashboardPermissions:
   clusterRoles:
     - view
     - secret-lister
-    - cluster-viewer
+    - cluster-object-viewer
