@@ -45,7 +45,7 @@ This module handles common cluster administration tasks, such as assigning clust
 
 #### `helm-initializer`
 
-This modules installs Tiller into `kube-system` namespace.
+This modules installs TLS-enabled Tiller into the `kube-system` namespace.
 
 #### `cert-manager`
 
@@ -63,6 +63,10 @@ This module installs the latest version of Istio (from `master` branch on GitHub
 
 This module installs istio-bookinfo sample application.
 
+#### `forms-app`
+
+This module installs a React app (served from nginx) with *Istio sidecar injection*.
+
 ### Project environments
 
 ```sh
@@ -78,7 +82,9 @@ live/
 │   │   ├── cluster
 │   │   │   └── terraform.tfvars
 │   │   ├── default
-│   │   │   └── bookinfo
+│   │   │   ├── bookinfo
+│   │   │   │   └── terraform.tfvars
+│   │   │   └── forms-app
 │   │   │       └── terraform.tfvars
 │   │   ├── istio-system
 │   │   │   └── istio
@@ -88,24 +94,15 @@ live/
 │   │       │   └── terraform.tfvars
 │   │       ├── cert-manager
 │   │       │   ├── resources
+│   │       │   │   └── certs.yaml
 │   │       │   └── terraform.tfvars
 │   │       └── helm-initializer
 │   │           └── terraform.tfvars
 │   └── secrets
 │       ├── default
 │       │   └── helm-tls
-│       │       ├── ca.cert.pem
-│       │       ├── helm.cert.pem
-│       │       ├── helm.key.pem
-│       │       ├── tiller.cert.pem
-│       │       └── tiller.key.pem
 │       └── kube-system
 │           ├── helm-tls
-│           │   ├── ca.cert.pem
-│           │   ├── helm.cert.pem
-│           │   ├── helm.key.pem
-│           │   ├── tiller.cert.pem
-│           │   └── tiller.key.pem
 │           └── owner.json
 ├── stg
 │   ...
