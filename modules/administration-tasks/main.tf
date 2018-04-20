@@ -21,7 +21,7 @@ module "administration_tasks" {
   release_name      = "administration-tasks"
   release_namespace = "kube-system"
 
-  chart_repo    = "exekube"
+  chart_repo    = "${helm_repository.exekube.name}"
   chart_name    = "administration-tasks"
   chart_version = "0.3.0"
 }
