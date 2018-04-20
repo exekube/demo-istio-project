@@ -10,13 +10,6 @@ module "system_tiller" {
   source = "/exekube-modules/helm-initializer"
 
   secrets_dir = "${var.secrets_dir}"
-}
 
-# Install Tiller in default namespace with cluster-admin permissions
-#   only for the namespace
-module "default_tiller" {
-  source = "/exekube-modules/helm-initializer"
-
-  secrets_dir      = "${var.secrets_dir}"
-  tiller_namespace = "default"
+  # tiller_namespace = "kube-system"
 }
