@@ -13,5 +13,5 @@ module "bookinfo" {
   release_namespace = "default"
   istio_inject      = true
 
-  chart_name = "bookinfo/"
+  chart_name = "bookinfo-v1alpha3/"
 }
