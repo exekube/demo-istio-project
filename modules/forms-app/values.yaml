@@ -16,6 +16,13 @@ ingress:
   enabled: true
   annotations:
     kubernetes.io/ingress.class: istio
+
+  istio:
+    redirectToHttps:
+      enabled: true
+      service: http-redirector-nginx
+      port: 80
+
   hosts:
     - ${domain_name}
   tls:

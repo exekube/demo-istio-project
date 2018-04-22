@@ -1548,7 +1548,7 @@ metadata:
   labels:
     istio: ingress
 spec:
-  loadBalancerIP: ${load_balancer_ip}
+  loadBalancerIP: {{ .Values.loadBalancerIP }}
   type: LoadBalancer
   ports:
   - port: 80

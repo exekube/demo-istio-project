@@ -1,19 +1,17 @@
+provider "helm" {}
+
 terraform {
   backend "gcs" {}
 }
 
-resource "null_resource" "bookinfo_app" {
-  provisioner "local-exec" {
-    interpreter = ["/bin/bash", "-c"]
+variable "secrets_dir" {}
 
-    command = <<EOF
-kubectl apply -f \
-  <(istioctl kube-inject --debug -f ${path.module}/bookinfo.yaml)
-EOF
-  }
+module "bookinfo" {
+  source = "/exekube-modules/helm-template-release"
 
-  provisioner "local-exec" {
-    when    = "destroy"
-    command = "bash ${path.module}/cleanup.sh"
-  }
+  release_name      = "bookinfo"
+  release_namespace = "default"
+  istio_inject      = true
+
+  chart_name = "bookinfo/"
 }

@@ -1,0 +1,9 @@
+name: istio
+version: 0.7.1
+description: Helm chart for Istio v0.7.1 deployment
+keywords:
+  - istio
+sources:
+  - http://github.com/istio/istio
+engine: gotpl
+icon: https://istio.io/favicons/android-192x192.png
