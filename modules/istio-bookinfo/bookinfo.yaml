@@ -191,7 +191,7 @@ spec:
         - containerPort: 9080
 ---
 ###########################################################################
-# Ingress resource (gateway)
+# Secure ingress resource (gateway)
 ##########################################################################
 apiVersion: extensions/v1beta1
 kind: Ingress
@@ -221,3 +221,34 @@ spec:
         backend:
           serviceName: productpage
           servicePort: 9080
+
+---
+###########################################################################
+# INSECURE INGRESS (REDIRECT TO HTTPS)
+##########################################################################
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: gateway-http
+  annotations:
+    kubernetes.io/ingress.class: istio
+spec:
+  rules:
+  - http:
+      paths:
+      - path: /productpage
+        backend:
+          serviceName: http-redirector-nginx
+          servicePort: 80
+      - path: /login
+        backend:
+          serviceName: http-redirector-nginx
+          servicePort: 80
+      - path: /logout
+        backend:
+          serviceName: http-redirector-nginx
+          servicePort: 80
+      - path: /api/v1/products.*
+        backend:
+          serviceName: http-redirector-nginx
+          servicePort: 80

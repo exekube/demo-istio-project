@@ -1676,3 +1676,75 @@ spec:
           - --grpc-hostname=istio-ca
           - --self-signed-ca=true
 ---
+
+
+
+# ------------------------------------------------------------------------------
+# HTTP -> HTTPS REDIRECTOR
+# ------------------------------------------------------------------------------
+
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: http-redirector-nginx
+data:
+  default.conf: |
+    server {
+      listen 80;
+      server_tokens off;
+
+      if ($http_x_forwarded_proto = "http") {
+        return 301 https://$host$request_uri;
+      }
+    }
+---
+# Source: nginx/templates/deployment.yaml
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: http-redirector-nginx
+  labels:
+    app: http-redirector-nginx
+spec:
+  replicas: 1
+  strategy:
+    rollingUpdate:
+      maxSurge: 0
+      maxUnavailable: 1
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: http-redirector-nginx
+    spec: # PodSpec
+      volumes:
+        - name: http-redirector-nginx-conf
+          configMap:
+            name: http-redirector-nginx
+      containers:
+        - name: nginx
+          image: nginx:1.13.12-alpine
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 80
+          volumeMounts:
+            - name: http-redirector-nginx-conf
+              mountPath: /etc/nginx/conf.d
+          resources:
+            {}
+---
+# Source: nginx/templates/service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: http-redirector-nginx
+  labels:
+    app: http-redirector-nginx
+spec:
+  type: ClusterIP
+  selector:
+    app: http-redirector-nginx
+  ports:
+    - name: http
+      port: 80
+      targetPort: 80
