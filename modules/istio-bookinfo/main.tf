@@ -1,10 +1,6 @@
-provider "helm" {}
-
 terraform {
   backend "gcs" {}
 }
-
-variable "secrets_dir" {}
 
 module "bookinfo" {
   source = "/exekube-modules/helm-template-release"

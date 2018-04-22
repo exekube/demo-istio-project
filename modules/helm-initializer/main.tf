@@ -10,6 +10,4 @@ module "system_tiller" {
   source = "/exekube-modules/helm-initializer"
 
   secrets_dir = "${var.secrets_dir}"
-
-  # tiller_namespace = "kube-system"
 }

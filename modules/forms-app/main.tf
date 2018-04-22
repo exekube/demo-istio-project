@@ -2,7 +2,6 @@ terraform {
   backend "gcs" {}
 }
 
-variable "secrets_dir" {}
 variable "domain_name" {}
 
 module "forms_app" {

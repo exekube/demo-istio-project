@@ -1,10 +1,7 @@
-provider "helm" {}
-
 terraform {
   backend "gcs" {}
 }
 
-variable "secrets_dir" {}
 variable "load_balancer_ip" {}
 
 module "istio" {
