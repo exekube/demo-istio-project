@@ -1,19 +1,8 @@
-provider "helm" {}
-
 terraform {
   backend "gcs" {}
 }
 
 variable "secrets_dir" {}
-
-resource "helm_repository" "exekube" {
-  name = "exekube"
-  url  = "https://exekube.github.io/charts"
-
-  provisioner "local-exec" {
-    command = "helm repo update"
-  }
-}
 
 module "administration_tasks" {
   source = "/exekube-modules/helm-template-release"
@@ -24,4 +13,15 @@ module "administration_tasks" {
   chart_repo    = "${helm_repository.exekube.name}"
   chart_name    = "administration-tasks"
   chart_version = "0.3.0"
+}
+
+provider "helm" {}
+
+resource "helm_repository" "exekube" {
+  name = "exekube"
+  url  = "https://exekube.github.io/charts"
+
+  provisioner "local-exec" {
+    command = "helm repo update"
+  }
 }
