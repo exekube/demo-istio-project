@@ -13,7 +13,7 @@ module "forms_app" {
   release_namespace = "default"
   chart_repo        = "exekube"
   chart_name        = "nginx-react"
-  chart_version     = "0.1.1"
+  chart_version     = "0.1.2"
 
   istio_inject = true
 
