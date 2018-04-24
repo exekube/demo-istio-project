@@ -12,7 +12,7 @@ module "administration_tasks" {
 
   chart_repo    = "${helm_repository.exekube.name}"
   chart_name    = "administration-tasks"
-  chart_version = "0.3.0"
+  chart_version = "0.3.1"
 }
 
 provider "helm" {}

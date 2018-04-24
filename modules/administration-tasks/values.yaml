@@ -2,6 +2,9 @@
 namespaces:
   - name: istio-system
     secure: false
+    labels:
+      name: istio-system
+      app: istio
 
 # Assign users as cluster-admins
 clusterAdmins:
