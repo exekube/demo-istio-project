@@ -10,6 +10,7 @@ module "istio" {
   release_name      = "istio"
   release_namespace = "istio-system"
 
-  chart_name       = "istio/"
+  chart_name = "istio/"
+
   load_balancer_ip = "${var.load_balancer_ip}"
 }

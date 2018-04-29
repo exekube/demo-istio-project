@@ -2,7 +2,7 @@
 
 terragrunt = {
   terraform {
-    source = "/project/modules//istio-bookinfo"
+    source = "/project/modules//bookinfo"
   }
 
   dependencies {

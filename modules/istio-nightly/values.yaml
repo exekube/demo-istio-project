@@ -86,7 +86,7 @@ ingress:
 #  cpu: 100m
 #  memory: 128Mi
   service:
-    loadBalancerIP: ${load_balancer_ip}
+    # loadBalancerIP: ${load_balancer_ip}
     nodePort:
       enabled: false
       port: 32000

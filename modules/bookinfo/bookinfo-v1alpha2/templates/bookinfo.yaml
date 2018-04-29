@@ -224,7 +224,7 @@ spec:
 
 ---
 ###########################################################################
-# INSECURE INGRESS (REDIRECT TO HTTPS)
+# Insecure Ingress (HTTP)
 ##########################################################################
 apiVersion: extensions/v1beta1
 kind: Ingress
