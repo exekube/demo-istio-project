@@ -23,15 +23,17 @@ resource "null_resource" "cert_manager_resources" {
   depends_on = ["module.cert_manager"]
 
   provisioner "local-exec" {
-    # command = "kubectl apply -f ${path.module}/resources/"
-    command = "kubectl -n istio-system apply -f ${var.secrets_dir}/kube-system/istio-ingress-certs.yaml"
+    command = "kubectl apply -f ${path.module}/resources/"
+
+    # command = "kubectl -n istio-system apply -f ${var.secrets_dir}/kube-system/istio-ingress-certs.yaml"
   }
 
   provisioner "local-exec" {
     when = "destroy"
 
-    # command = "kubectl delete -f ${path.module}/resources/"
-    command    = "kubectl -n istio-system delete -f ${var.secrets_dir}/kube-system/istio-ingress-certs.yaml"
+    command = "kubectl delete -f ${path.module}/resources/"
+
+    # command    = "kubectl -n istio-system delete -f ${var.secrets_dir}/kube-system/istio-ingress-certs.yaml"
     on_failure = "continue"
   }
 }

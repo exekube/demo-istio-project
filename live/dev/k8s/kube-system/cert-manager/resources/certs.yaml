@@ -10,12 +10,12 @@ spec:
     name: letsencrypt-stg
   # commonName: example.com
   dnsNames:
-  - dev.bookinfo.istio.exekube.us
-  - dev.app.istio.exekube.us
+  - dev.bookinfo.example.com
+  - dev.app.example.com
   acme:
     config:
     - http01:
         ingressClass: istio
       domains:
-      - dev.bookinfo.istio.exekube.us
-      - dev.app.istio.exekube.us
+      - dev.bookinfo.example.com
+      - dev.app.istio.example.com
