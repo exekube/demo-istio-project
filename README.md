@@ -16,7 +16,7 @@ This project uses the Exekube [base-project](https://github.com/exekube/base-pro
 
 Configure which module to use: https://github.com/exekube/demo-istio-project/blob/85fd322c9f1f5f1c43b4bd3c49853ab1fb7def5d/live/dev/k8s/istio-system/istio/terraform.tfvars#L5
 
-### istio-bookinfo
+### bookinfo
 
 Bookinfo app, a sample app for Istio
 
