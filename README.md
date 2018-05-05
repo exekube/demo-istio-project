@@ -6,27 +6,37 @@ This is a project you can use as a playground to preview Istio ⛵️
 
 ### Base modules
 
-This project uses the Exekube [base-project](https://github.com/exekube/base-project) as its boilerplate.
+This project uses the Exekube [base-project](https://github.com/exekube/base-project) as its boilerplate:
 
-### istio / istio-nightly
+### modules/istio
 
-:warning: Install only one of:
-- `istio`: (default) "stable" (0.7.1) version of Istio (latest release on GitHub) or
-- `istio-nightly`: nightly version (a recent version of master branch on [github.com/istio/istio](https://github.com/istio/istio))
+The `master` branch uses Istio 0.7.1 (the latest release on GitHub).
 
-Configure which module to use: https://github.com/exekube/demo-istio-project/blob/85fd322c9f1f5f1c43b4bd3c49853ab1fb7def5d/live/dev/k8s/istio-system/istio/terraform.tfvars#L5
+You can also follow [`istio-prelim`](https://github.com/exekube/demo-istio-project/tree/istio-prelim) branch to try Istio 0.8.0 which is still under development. Once 0.8.0 is released, it will be merged into master.
 
-### bookinfo
+### modules/bookinfo
 
 Bookinfo app, a sample app for Istio
 
 - Local address (through `kubectl proxy`): <http://localhost:8001/api/v1/namespaces/default/services/productpage:9080/proxy/productpage>
 - External address: `https://<ISTIO-INGRESS-IP>/productpage`
 
-### forms-app
+### modules/forms-app
 
 A custom React app to test out Istio ingress and auto-injection
 
-Local address: N/A (fails due to http->https redirect)
+Local address: <http://localhost:8001/api/v1/namespaces/default/services/forms-app-nginx-react:80/proxy>
 
-External address: (disabled by default)
+External address: `https://<ISTIO-INGRESS-IP>`
+
+## Production networking
+
+⚠️ By default, this project ships with minimally configured networking for simplicity and ease of setup, though our services will be available only privately (from within the cluster).
+
+In order to get our applications production-ready (available to end users), we will need to:
+
+1. Create a static (unchanging) IP address for `istio-ingress`
+2. Create DNS records to point clients to this address
+3. Use [cert-manager](https://github.com/jetstack/cert-manager) to enable TLS for the domains
+
+Follow the tutorial in this article: <https://docs.exekube.com/in-practice/production-networking>

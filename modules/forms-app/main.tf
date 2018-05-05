@@ -13,6 +13,6 @@ module "forms_app" {
   release_namespace = "default"
   chart_repo        = "exekube"
   chart_name        = "nginx-react"
-  chart_version     = "0.1.3"
+  chart_version     = "0.2.0"
   domain_name       = "${var.domain_name}"
 }
