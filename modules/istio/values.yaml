@@ -1,4 +1,4 @@
 ingress:
-  enabled: false
+  enabled: true
   service:
     loadBalancerIP: "${load_balancer_ip}"

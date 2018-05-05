@@ -8,14 +8,13 @@ spec:
   issuerRef:
     kind: ClusterIssuer
     name: letsencrypt-stg
-  # commonName: example.com
   dnsNames:
-  - dev.bookinfo.example.com
-  - dev.app.example.com
+  - dev.bookinfo.istio.exekube.us
+  - dev.app.istio.exekube.us
   acme:
     config:
     - http01:
         ingressClass: istio
       domains:
-      - dev.bookinfo.example.com
-      - dev.app.istio.example.com
+      - dev.bookinfo.istio.exekube.us
+      - dev.app.istio.exekube.us

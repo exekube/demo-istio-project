@@ -12,17 +12,12 @@ terragrunt = {
 
 # ↓ Module configuration (empty means all default)
 
-create_static_ip_address = false
+create_static_ip_address = true
 
-dns_zones = {}
+dns_zones = {
+  istio-exekube-us = "istio.exekube.us."
+}
 
-# dns_zones = {
-#   istio-exekube-us = "istio.exekube.us."
-# }
-
-dns_records = {}
-
-# dns_records = {
-#   istio-exekube-us = "*.istio.exekube.us."
-# }
-
+dns_records = {
+  istio-exekube-us = "*.istio.exekube.us."
+}
