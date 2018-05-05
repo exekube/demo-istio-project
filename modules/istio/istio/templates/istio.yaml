@@ -1537,6 +1537,7 @@ spec:
           secretName: istio.istio-pilot-service-account
           optional: true
 ---
+{{- if .Values.ingress.enabled }}
 ################################
 # Istio ingress
 ################################
@@ -1548,7 +1549,9 @@ metadata:
   labels:
     istio: ingress
 spec:
-  loadBalancerIP: {{ .Values.loadBalancerIP }}
+{{- if .Values.ingress.service.loadBalancerIP }}
+  loadBalancerIP: "{{ .Values.ingress.service.loadBalancerIP }}"
+{{- end }}
   type: LoadBalancer
   ports:
   - port: 80
@@ -1637,6 +1640,7 @@ spec:
         secret:
           secretName: istio-ingress-certs
           optional: true
+{{- end }}
 ---
 ################################
 # Istio-CA cluster-wide

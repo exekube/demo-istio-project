@@ -1,1 +1,4 @@
-loadBalancerIP: ""
+ingress:
+  enabled: true
+  service:
+    loadBalancerIP: ""
