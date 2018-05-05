@@ -19,19 +19,18 @@ You can also follow [`istio-prelim`](https://github.com/exekube/demo-istio-proje
 Bookinfo app, a sample app for Istio
 
 - Local address (through `kubectl proxy`): <http://localhost:8001/api/v1/namespaces/default/services/productpage:9080/proxy/productpage>
-- External address: `https://<ISTIO-INGRESS-IP>/productpage`
+- External address: n/a
 
 ### modules/forms-app
 
 A custom React app to test out Istio ingress and auto-injection
 
-Local address: <http://localhost:8001/api/v1/namespaces/default/services/forms-app-nginx-react:80/proxy>
+- Local address: <http://localhost:8001/api/v1/namespaces/default/services/forms-app-nginx-react:80/proxy>
+- External address: n/a
 
-External address: `https://<ISTIO-INGRESS-IP>`
+## ⚠️ Production networking
 
-## Production networking
-
-⚠️ By default, this project ships with minimally configured networking for simplicity and ease of setup, though our services will be available only privately (from within the cluster).
+By default, this project ships with minimally configured networking for simplicity and ease of setup, though our services will be available only privately (from within the cluster).
 
 In order to get our applications production-ready (available to end users), we will need to:
 
