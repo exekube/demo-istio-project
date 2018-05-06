@@ -6,8 +6,8 @@ This is a project you can use as a playground to preview Istio ⛵️
 
 - [demo-istio-project](#demo-istio-project)
 	- [Networking](#networking)
-		- [Private apps](#private-apps)
-		- [Apps on the public Internet](#apps-on-the-public-internet)
+		- [Privately expose your applications](#privately-expose-your-applications)
+		- [Publicly expose your applications](#publicly-expose-your-applications)
 	- [Modules](#modules)
 		- [Base modules](#base-modules)
 		- [modules/istio](#modulesistio)
@@ -18,9 +18,11 @@ This is a project you can use as a playground to preview Istio ⛵️
 
 ## Networking
 
-### Private apps
+### Privately expose your applications
 
-By default, this project ships with minimally configured networking for simplicity and ease of setup, though our services will be available only privately via `kubectl proxy` (from within the cluster). For this project, you can enable the proxy by typing in your shell
+By default, this project ships with minimally configured networking for simplicity and ease of setup, though our services will be available only privately from within the cluster or via `kubectl proxy`.
+
+For this project, you can enable the proxy on `localhost:8001` by typing in your shell:
 
 ```sh
 docker-compose up
@@ -28,20 +30,14 @@ docker-compose up
 
 Use can then access the applications using the "Private address" links below.
 
-### Apps on the public Internet
+### Publicly expose your applications
 
-If we want to expose our services (applications) on the public Internet, we will need to:
+[Read this tutorial](https://docs.exekube.com/in-practice/production-networking) to learn how to expose your application on the public Internet, including:
 
-1. Create an [external static IP address](/) for `istio-ingress` service.
-2. Enable `istio-ingress` (Kubernetes LoadBalancer type of service)
-3. Create DNS records to point clients to this address
-4. Use [cert-manager](https://github.com/jetstack/cert-manager) to enable TLS for the domains
-5. Enable `Ingress` resources for our Helm releases.
-
-Use [this pull request](/) as an example of how to set up production networking.
-
-There is also a step-by-step tutorial: <https://docs.exekube.com/in-practice/production-networking>
-
+- Setting a permanent external IP address
+- Creating DNS records
+- Enabling a cluster ingress controller
+- Adding HTTPS via Let's Encrypt TLS certificates
 
 ## Modules
 
@@ -59,18 +55,18 @@ Modules from base-project:
 
 The `master` branch uses Istio 0.7.1 (the latest release on GitHub).
 
-You can also follow [`istio-prelim`](https://github.com/exekube/demo-istio-project/tree/istio-prelim) branch to try Istio 0.8.0 which is still under development. Once 0.8.0 is released, it will be merged into master.
+You can also follow [`istio-preliminary`](https://github.com/exekube/demo-istio-project/tree/istio-preliminary) branch to try Istio 0.8.0 which is still under development. Once 0.8.0 is released, it will be merged into master.
 
 ### modules/bookinfo
 
 Bookinfo app, a sample app for Istio
 
 - Private address: <http://localhost:8001/api/v1/namespaces/default/services/productpage:9080/proxy/productpage>
-- Public address: [read instructions above](#apps-on-the-public-internet)
+- Public address: [read instructions above](#publicly-expose-your-applications)
 
 ### modules/forms-app
 
 A custom React app to test out Istio ingress and auto-injection
 
 - Private address: <http://localhost:8001/api/v1/namespaces/default/services/forms-app-nginx-react:80/proxy>
-- Public address: [read instructions above](#apps-on-the-public-internet)
+- Public address: [read instructions above](#publicly-expose-your-applications)
