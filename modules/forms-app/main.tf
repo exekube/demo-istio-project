@@ -7,8 +7,6 @@ variable "domain_name" {}
 module "forms_app" {
   source = "/exekube-modules/helm-template-release"
 
-  istio_inject = true
-
   release_name      = "forms-app"
   release_namespace = "default"
   chart_repo        = "exekube"
