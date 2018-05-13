@@ -3,13 +3,16 @@ terraform {
 }
 
 variable "secrets_dir" {}
+variable "domain_name" {}
 
-module "bookinfo" {
+module "railsgoat" {
   source           = "/exekube-modules/helm-release"
   tiller_namespace = "kube-system"
   client_auth      = "${var.secrets_dir}/kube-system/helm-tls"
 
-  release_name      = "bookinfo"
+  release_name      = "railsgoat"
   release_namespace = "default"
-  chart_name        = "bookinfo-v1alpha2/"
+  domain_name       = "${var.domain_name}"
+
+  chart_name = "railsgoat/"
 }

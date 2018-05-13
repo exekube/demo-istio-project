@@ -1,0 +1,49 @@
+# Default values for ..
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+replicaCount: 2
+# nameOverride: railsgoat
+image:
+  repository: gcr.io/dev-demo-apps-296e23/railsgoat
+  tag: latest
+  pullPolicy: Always
+
+serviceType: ClusterIP
+servicePort: 3000
+
+resources:
+  limits:
+    cpu: 100m
+    memory: 128Mi
+  requests:
+    cpu: 100m
+    memory: 128Mi
+
+## Configuration values for the postgresql dependency.
+## ref: https://github.com/kubernetes/charts/blob/master/stable/postgresql/README.md
+##
+postgresql:
+  persistence:
+    enabled: true
+  postgresUser: postgres
+  postgresPassword: postgres
+
+ingress:
+  enabled: true
+
+  istio:
+    redirectToHttps:
+      enabled: true
+      service: http-redirector-nginx
+      port: 80
+
+  annotations:
+    kubernetes.io/ingress.class: istio
+    # ingress.kubernetes.io/ssl-redirect: "true"
+
+  hosts:
+    - ${domain_name}
+  tls:
+    - secretName: istio-ingress-certs
+      hosts:
+        - ${domain_name}
