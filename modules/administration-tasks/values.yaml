@@ -5,6 +5,11 @@ namespaces:
     labels:
       name: istio-system
       app: istio
+  - name: heptio-ark
+    secure: false
+    labels:
+      name: heptio-ark
+      app: ark
 
 # Assign users as cluster-admins
 clusterAdmins:
