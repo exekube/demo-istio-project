@@ -11,5 +11,5 @@ module "bookinfo" {
 
   release_name      = "bookinfo"
   release_namespace = "default"
-  chart_name        = "bookinfo-v1alpha2/"
+  chart_name        = "bookinfo/"
 }

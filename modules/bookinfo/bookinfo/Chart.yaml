@@ -1,8 +1,9 @@
-name: istio
-version: 0.7.1
-description: Helm chart for Istio v0.7.1 deployment
+name: bookinfo
+version: 0.8.0
+description: Helm chart for bookinfo deployment
 keywords:
   - istio
+  - bookinfo
 sources:
   - http://github.com/istio/istio
 engine: gotpl
