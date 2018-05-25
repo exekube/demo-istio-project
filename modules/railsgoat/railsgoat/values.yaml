@@ -18,13 +18,6 @@ ingress:
   annotations: {}
     # kubernetes.io/ingress.class: "nginx"
     # kubernetes.io/tls-acme: "true"
-
-  istio:
-    redirectToHttps:
-      enabled: false
-      service: http-redirector-nginx
-      port: 80
-
   hosts: []
   tls: []
 

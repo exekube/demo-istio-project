@@ -29,21 +29,12 @@ postgresql:
   postgresPassword: postgres
 
 ingress:
-  enabled: true
-
-  istio:
-    redirectToHttps:
-      enabled: true
-      service: http-redirector-nginx
-      port: 80
-
+  enabled: false
   annotations:
-    kubernetes.io/ingress.class: istio
+    # kubernetes.io/ingress.class: nginx
     # ingress.kubernetes.io/ssl-redirect: "true"
-
-  hosts:
-    - ${domain_name}
-  tls:
-    - secretName: istio-ingress-certs
-      hosts:
-        - ${domain_name}
+  hosts: []
+  tls: []
+    # - secretName: istio-ingress-certs
+    #   hosts:
+    #     - ${domain_name}
