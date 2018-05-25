@@ -1,6 +1,6 @@
 name: bookinfo
-version: 0.8.0
-description: Umbrella chart for Bookinfo app
+version: 0.1.0
+description: Helm chart for Bookinfo sample app
 keywords:
   - istio
   - bookinfo

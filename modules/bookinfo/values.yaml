@@ -1,3 +1,4 @@
-# test
-gateway:
-  enabled: true
+# -
+bookinfo:
+  gateway:
+    enabled: true
