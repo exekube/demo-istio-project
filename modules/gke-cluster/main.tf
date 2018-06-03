@@ -10,12 +10,12 @@ module "gke_cluster" {
   project_id         = "${var.project_id}"
   serviceaccount_key = "${var.serviceaccount_key}"
 
-  initial_node_count = 2
+  initial_node_count = 3
   node_type          = "n1-standard-2"
 
   kubernetes_version = "1.9.7-gke.1"
 
-  # node_image_type    = "ubuntu"
+  # node_image_type    = "COS"
   # kubernetes_version = "1.10.2-gke.1"
 
   main_compute_zone = "europe-west1-d"

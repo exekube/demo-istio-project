@@ -11,10 +11,10 @@ spec:
       number: 80
       name: http
       protocol: HTTP
-    hosts:
-    - dev.bookinfo.istio.exekube.us
     tls:
       httpsRedirect: true
+    hosts:
+    - dev.bookinfo.istio.exekube.us
   - port:
       number: 443
       name: https
@@ -32,7 +32,7 @@ metadata:
   name: bookinfo
 spec:
   hosts:
-  - "dev.bookinfo.istio.exekube.us"
+  - dev.bookinfo.istio.exekube.us
   gateways:
   - bookinfo-gateway
   http:
